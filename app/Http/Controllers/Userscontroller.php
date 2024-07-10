@@ -41,7 +41,10 @@ class Userscontroller extends Controller
 
     public function loginsubmit(Request $request)
     {
-        
+        $validateDare = $request->validate([
+            'email' => 'required:email',
+            'password' => 'required|min:6|max:12'
+        ]);
         
         $email =  $request->input('email');
         $password =  $request->input('password');
