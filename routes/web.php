@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\Userscontroller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Models\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/about', function () {
@@ -35,5 +39,19 @@ Route::controller(Userscontroller::class)->group(function () {
         
         Route::get('/login' , 'login');
         Route::post('login' , 'loginsubmit')->name('login.submit');
-    }
-);
+        Route::get('/home' , 'home');
+        Route::get('/user' , 'user');
+        Route::get('/noaccess' , 'noaccess');
+    });
+
+Route::controller(PostController::class)->group(function (){
+        Route::get('/post','getAllPost');
+    });
+    
+Route::controller(CommentController::class)->group(function () {
+    Route::get('/comment','getComment');
+});
+
+Route::controller(StudentController::class)->group(function () {
+    Route::get('/student','student');
+});

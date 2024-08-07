@@ -23,15 +23,15 @@ class Userscontroller extends Controller
         // return $request->fullUrl();
     }
 
-    public function User()
-    {
-        // $users = array(
-        //     "name" => "Bunnasorn",
-        //     "email" => "650112418017@bru.ac.th",
-        //     "phone" => "0996134898",
-        // );
-        // return view('user' ,compact('users'));
-    }
+    // public function user()
+    // {
+    //     // $users = array(
+    //     //     "name" => "Bunnasorn",
+    //     //     "email" => "650112418017@bru.ac.th",
+    //     //     "phone" => "0996134898",
+    //     // );
+    //     // return view('user' ,compact('users'));
+    // }
 
     public function login()
     {
@@ -50,5 +50,17 @@ class Userscontroller extends Controller
         $password =  $request->input('password');
 
         return 'Email : ' . $email . ' Password : ' . $password;
+    }
+
+
+    //middleware
+    public function home() {
+        return view('home');
+    }
+    public function user() {
+        return view('user');
+    }
+    public function noaccess() {
+        return view('noaccess');
     }
 }
